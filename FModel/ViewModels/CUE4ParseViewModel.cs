@@ -64,6 +64,8 @@ using CUE4Parse.UE4.Wwise;
 using CUE4Parse.Utils;
 using CUE4Parse_Conversion;
 using CUE4Parse_Conversion.Sounds;
+using CUE4Parse.MappingsProvider.Jmap;
+using CUE4Parse.MappingsProvider.Usmap;
 using EpicManifestParser;
 using EpicManifestParser.UE;
 using FModel.Creator;
