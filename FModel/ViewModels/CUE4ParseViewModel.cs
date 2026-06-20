@@ -336,6 +336,7 @@ public class CUE4ParseViewModel : ViewModel
             }
 
             Provider.Initialize();
+            GameDirectory.AddLooseFiles(Provider.LooseFileCount);
             _wwiseProviderLazy = new Lazy<WwiseProvider>(() => new WwiseProvider(Provider, UserSettings.Default.GameDirectory));
             _fmodProviderLazy = new Lazy<FModProvider>(() => new FModProvider(Provider, UserSettings.Default.GameDirectory));
             _criWareProviderLazy = new Lazy<CriWareProvider>(() => new CriWareProvider(Provider, UserSettings.Default.GameDirectory));
