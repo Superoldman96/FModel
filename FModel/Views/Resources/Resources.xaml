@@ -121,8 +121,6 @@
                             Value="0 1" />
                     <Setter Property="Padding"
                             Value="7 5" />
-                    <Setter Property="Background"
-                            Value="{DynamicResource {x:Static adonisUi:Brushes.Layer0BackgroundBrush}}" />
                     <Setter Property="BorderBrush"
                             Value="Transparent" />
                     <Setter Property="BorderThickness"
