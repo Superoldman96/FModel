@@ -49,6 +49,7 @@ using CUE4Parse.UE4.BinaryConfig;
 using CUE4Parse.UE4.CriWare;
 using CUE4Parse.UE4.CriWare.Readers;
 using CUE4Parse.UE4.FMod;
+using CUE4Parse.UE4.GameFeatures;
 using CUE4Parse.UE4.IO;
 using CUE4Parse.UE4.Localization;
 using CUE4Parse.UE4.Lua.unluac;
@@ -851,6 +852,13 @@ public class CUE4ParseViewModel : ViewModel
 
                 break;
             }
+            case "bin" when entry.Name.Contains("GameFeatureVersePaths", StringComparison.OrdinalIgnoreCase):
+            {
+                var archive = entry.CreateReader();
+                var versePathLookup = new FGameFeatureVersePathLookup(archive);
+                TabControl.SelectedTab.SetDocumentText(JsonConvert.SerializeObject(versePathLookup, Formatting.Indented), saveProperties, updateUi);
+                break;
+            }
             case "bank":
             {
                 var archive = entry.CreateReader();
@@ -1095,6 +1103,11 @@ public class CUE4ParseViewModel : ViewModel
             {
                 var l10nData = new FAion2L10NFile(entry, Provider);
                 TabControl.SelectedTab.SetDocumentText(JsonConvert.SerializeObject(l10nData, Formatting.Indented), saveProperties, updateUi);
+            }
+            else if (entry.NameWithoutExtension.Equals("key_manifest"))
+            {
+                var keymanifest = new FAion2KeyManifestFile(entry, Provider);
+                TabControl.SelectedTab.SetDocumentText(JsonConvert.SerializeObject(keymanifest, Formatting.Indented), saveProperties, updateUi);
             }
             else
             {
