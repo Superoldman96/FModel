@@ -1237,7 +1237,7 @@ public class CUE4ParseViewModel : ViewModel
             {
                 if (!TabControl.CanAddTabs) return false;
 
-                TabControl.AddTab($"{verseDigest.ProjectName}.verse");
+                TabControl.AddTab($"{verseDigest.Name}.verse");
                 TabControl.SelectedTab.Highlighter = AvalonExtensions.HighlighterSelector("verse");
                 TabControl.SelectedTab.SetDocumentText(verseDigest.ReadableCode, false, false);
                 return true;
@@ -1621,7 +1621,7 @@ public class CUE4ParseViewModel : ViewModel
             if (dummy is not UClass || pointer.Object.Value is not UClass blueprint)
                 continue;
 
-            cppList.Add(blueprint.DecompileBlueprintToPseudo(pkg.Mappings, cookedMetaData));
+            cppList.Add(blueprint.DecompileBlueprintToPseudo(cookedMetaData));
         }
 
         if (cppList.Count == 0) return false;
